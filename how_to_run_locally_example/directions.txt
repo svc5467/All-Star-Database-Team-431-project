@@ -43,6 +43,8 @@ What you need:
 				- simply click push and select the branches you want to push (i recommend pushing all branches)
 			To PULL from server:
 				- simply click pull
+				- you may have to go to repository->repository settings -> advanced -> uncheck use global user settings -> enter your name and email -> ok
+					- you will probably have to do that prior to pushing (it will give you an error if you don't
 				
 To use xampp:
 - open xampp
