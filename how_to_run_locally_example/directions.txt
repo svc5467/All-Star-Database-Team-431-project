@@ -1,0 +1,55 @@
+What you need:
+- sqlite installed
+- xampp installed
+- some kind of version control system. I recommend source tree
+	- download that if you havn't already
+	- set up a repository on your local machine, and pull from our github page
+		- to do this
+			- log into github
+			- go to our repository, click overview
+				- you should see a URL, select it and copy it
+			- now in source tree (or whatever version control you are using) click clone/new,
+				- click clone the clone repo tab 
+					-(in source tree its the default option when you click clone/new)
+				- paste the url into the source path
+			- IMPORTANTL: set up the destination path to somewhere in c:/xampp/htdocs 
+					- I RECOMEND naming it AllStarDB so the paths are the same for all of us
+					-(this will your current working version be accessible from local host)
+			- create branch named lastname_development
+			- checkout that branch (if it doesn't automatically when you create the branch)
+			- you are now ready to develop (just make sure while you work your development branch is checkout)
+			- NOTE: you can create as many branches as you want, just name them lastname_development_v01 ...
+				- I recommend you do that any time you start making a major change that you may want to revert.
+					- if you screw something, stage then commit your changes you want to revert, then just checkout the branch version before, and all the changes will be reverted
+	Version Control directions:
+			To COMMIT: this is you updating your branch with your changes
+				-(must be done before merge)
+				- MAKE SURE the branch you want to update is checkout (if the wrong one is checkout you will update the wrong version)
+				- first STAGE your changes (see to stage section)
+				- then commit (in source tree simply click commit button (next to clone button)
+			To STAGE:
+				- in source tree, click on working copy (below file status)
+					- then click unstaged file checkbox
+			To MERGE:
+				- make sure you have a stable version
+				- commit your changes (MAKE SURE your development branch is checked out)
+				- pull from the server (see To PULL from server below)
+				- run the master version you just pulled, make sure it runs
+				- checkout master branch
+				- click merge
+				- select your development branch
+				- this has just merged your version locally, now its time to push it to the server
+			To PUSH to server:
+				- simply click push and select the branches you want to push (i recommend pushing all branches)
+			To PULL from server:
+				- simply click pull
+				
+To use xampp:
+- open xampp
+- click start apache (should be the first start button)
+	- when you are running the server (what you just did) the folder c:/xampp/htdocs 
+		is now accessible to your web-browsers by going typing localhost as the url
+		- so if you have your repository in c:/xampp/htdocs/AllStarDB and you want to run index.html
+		- simply go to localhost/AllStarDB/index.html
+			- this should behave as if it was on the server
+
