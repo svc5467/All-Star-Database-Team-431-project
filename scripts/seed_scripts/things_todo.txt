@@ -1,0 +1,8 @@
+remove description from bid table
+
+//make items seller_id linked to seller_id
+//	-> note the items_auction will be only user_id's
+//	-> note the items_buy_it_now will be only supplier id's
+make bids user_id linked to an actual user
+make seller_ratings user_id AND seller_id linked to seller_id/user_id
+make shopping_cart use real user_id
