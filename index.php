@@ -1,140 +1,89 @@
 <?php
 
+<<<<<<< HEAD
 //$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
 $dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
+=======
+	$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+	
+	$error = "";
+>>>>>>> 39a78e5a8ac5146f1f2a07c44f1d92fc17459ca0
 
-// Selects the row that contains the user's house.
-$giftcardrows = $dbh->query("SELECT * FROM GiftCards");
-$addressrows = $dbh->query("SELECT * FROM Addresses");
-$bidrows = $dbh->query("SELECT * FROM Bids");
-$categoryrows = $dbh->query("SELECT * FROM Categories");
-$containrows = $dbh->query("SELECT * FROM Contains");
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		
+		// Checks that the fields were filled.
+     	if($password && $username)
+     	{
+     		// Counts the number of rows that have the same email. The number is stored in variable "count".
+			$statement = $dbh->query("SELECT COUNT(*) FROM Sellers WHERE login_name='".$username."'")->fetch();
+			$count = $statement[0];
+						
+			// If the user exists, we continue, if not, error is thrown.
+			if($count != 0)
+			{
+				$result = $dbh->query("SELECT * FROM Sellers WHERE login_name='".$username."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+				
+				$dbpassword = $result['pass'];
+			
+				if($password == $dbpassword)
+				{
+					header("location: http://php.scripts.psu.edu/asm5453/shop.php");
+				}
+				else
+				{
+					$error = "<font color=\"red\" size=\"2\">Try again.</font>";
+				}
+			}
+			else
+			{
+				$error = "<font color=\"red\" size=\"2\">Try again.</font>";
+			}
+     	}
+     	else
+     	{
+	     	$error = "<font color=\"red\" size=\"2\"> Please complete all fields.</font>";
+     	}
+	}
+	else
+	{
+		$username = "";
+		$password = "";
+	}
+		
+		
 
 ?>
 
 <html>
 	<body>
 		<h1>
-			Gift Cards
+			Login
 		</h1>
-		<table>
-			<tr>
-				<td> Code </td>
-				<td> Amount </td>
-			<?php
-				while($row = $giftcardrows->fetch(PDO::FETCH_ASSOC))
-				{
-				?>
-					<tr>
-						<td><?php echo $row["code"]; ?></td>
-						<td><?php echo $row["amount"]; ?></td>
-					</tr>
-					<?php
-				}
-			?>
+		<h6>
+			<?php echo $error; ?>
+		</h6>
 		
-		</table>
-		
-		
-		<h1>
-			Addresses
-		</h1>
-		<table>
-			<tr>
-				<td> Address Id </td>
-				<td> Street </td>
-				<td> City </td>
-				<td> Zipcode </td>
-			<?php
-				while($row = $addressrows->fetch(PDO::FETCH_ASSOC))
-				{
-				?>
-					<tr>
-						<td><?php echo $row["address_id"]; ?></td>
-						<td><?php echo $row["street"]; ?></td>
-						<td><?php echo $row["city"]; ?></td>
-						<td><?php echo $row["zipcode"]; ?></td>
-					</tr>
-					<?php
-				}
-			?>
-		
-		</table>
-		
-		
-		<h1>
-			Bids
-		</h1>
-		<table>
-			<tr>
-				<td> User Id </td>
-				<td> Sales Item Id </td>
-				<td> Time of Bid </td>
-				<td> Amount </td>
-				<td> Description </td>
-			<?php
-				while($row = $bidrows->fetch(PDO::FETCH_ASSOC))
-				{
-				?>
-					<tr>
-						<td><?php echo $row["user_id"]; ?></td>
-						<td><?php echo $row["sales_item_id"]; ?></td>
-						<td><?php echo $row["time_of_bid"]; ?></td>
-						<td><?php echo $row["amount"]; ?></td>
-						<td><?php echo $row["description"]; ?></td>
-					</tr>
-					<?php
-				}
-			?>
-		
-		</table>
-		
-		<h1>
-			Categories
-		</h1>
-		<table>
-			<tr>
-				<td> Category Id </td>
-				<td> Name </td>
-				<td> Description </td>
-			<?php
-				while($row = $categoryrows->fetch(PDO::FETCH_ASSOC))
-				{
-				?>
-					<tr>
-						<td><?php echo $row["category_id"]; ?></td>
-						<td><?php echo $row["name"]; ?></td>
-						<td><?php echo $row["description"]; ?></td>
-					</tr>
-					<?php
-				}
-			?>
-		
-		</table>
-		
-		<h1>
-			Contains
-		</h1>
-		<table>
-			<tr>
-				<td> Parent Category Id </td>
-				<td> Child Category Id </td>
-			<?php
-				while($row = $containrows->fetch(PDO::FETCH_ASSOC))
-				{
-				?>
-					<tr>
-						<td><?php echo $row["parent_category_id"]; ?></td>
-						<td><?php echo $row["child_category_id"]; ?></td>
-					</tr>
-					<?php
-				}
-			?>
-		
-		</table>
-		
-		
-		
-		
+		<form method="post" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			<table>
+				<tr>
+					<td>
+						<input type="text" name="username" maxlength="10" size="15" placeholder="Username"
+						 value="<?php echo $username;?>">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="password" name="password" maxlength="50" size="15" placeholder="Password"> 
+					</td>
+				</tr>
+			</table>
+			<p>
+				<!--<a href="javascript:history.go(-1)" class="links">&#8592; Back</a>-->
+				<input type="submit" class="links" value="Login">
+			</p>
+		</form>
 	</body>
 </html>
