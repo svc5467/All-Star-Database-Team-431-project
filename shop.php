@@ -1,12 +1,16 @@
 <?php
-	$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+	include "variables.php";
+	include "authenticate.php";
+
+	$dbh = new PDO("sqlite:".$database_url);
 	$itemRows = $dbh->query("SELECT title, buy_it_now_price, description FROM Items");
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="Stylesheet" type="text/css" href="http://www.personal.psu.edu/asm5453/css/stylesheet.css"/>
+		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/stylesheet.css";?>"/>
+		
 	</head>
 	
 	<body>

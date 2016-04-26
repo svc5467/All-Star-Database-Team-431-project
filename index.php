@@ -1,14 +1,12 @@
 <?php
+	include "variables.php";
 
-<<<<<<< HEAD
-//$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
-$dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
-=======
-	$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
-	
 	$error = "";
->>>>>>> 39a78e5a8ac5146f1f2a07c44f1d92fc17459ca0
-
+	$redirection_notice = "You must login to access that page";
+	$access_denied = "";
+	//$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+	$dbh = new PDO("sqlite:".$database_url);
+	
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		$username = $_POST['username'];
@@ -30,7 +28,10 @@ $dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
 			
 				if($password == $dbpassword)
 				{
-					header("location: http://php.scripts.psu.edu/asm5453/shop.php");
+					// user as been authenticated
+					// set cookie
+					setcookie('username', $_POST['username'], time()+60*60);
+					header("location: $website_url/shop.php");
 				}
 				else
 				{
@@ -49,10 +50,12 @@ $dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
 	}
 	else
 	{
+		if(isset($_GET['access_denied']))
+			$access_denied = $_GET['access_denied'];
+
 		$username = "";
 		$password = "";
 	}
-		
 		
 
 ?>
@@ -63,7 +66,11 @@ $dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
 			Login
 		</h1>
 		<h6>
-			<?php echo $error; ?>
+			<?php 
+				echo $error; 
+				if ($access_denied == "true")
+					echo $redirection_notice
+			?>
 		</h6>
 		
 		<form method="post" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
