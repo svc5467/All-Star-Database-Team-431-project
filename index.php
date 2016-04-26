@@ -1,8 +1,13 @@
 <?php
 
+<<<<<<< HEAD
+//$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+$dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
+=======
 	$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
 	
 	$error = "";
+>>>>>>> 39a78e5a8ac5146f1f2a07c44f1d92fc17459ca0
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
