@@ -1,0 +1,8 @@
+diff a/index.php b/index.php	(rejected hunks)
+@@ -1,6 +1,5 @@
+ <?php
+ 
+-$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+ //$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+ $dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
+ 
