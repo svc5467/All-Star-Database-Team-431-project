@@ -1,6 +1,7 @@
 <?php
 
-$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+//$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+$dbh = new PDO("sqlite:c:/xampp/htdocs/AllstarDB/allstar.sqlite");
 
 // Selects the row that contains the user's house.
 $giftcardrows = $dbh->query("SELECT * FROM GiftCards");
