@@ -1,0 +1,177 @@
+html
+{
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	background-color: #f5f0dc;
+	height: 100%;
+	width: 100%;
+	
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	user-select: none;
+}
+
+.tabs
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(255,208,0,0.90);
+	font-size: 12pt;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 500;
+	border-bottom-left-radius: 60px;
+	border-bottom-right-radius: 60px;
+	border-bottom: solid 3px white;
+	border-left: solid 3px white;
+	border-right: solid 3px white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.tabs li
+{
+	display: inline-block;
+	height: auto;
+	width: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid 1px rgba(255,255,255,0);
+}
+
+.tabs li:hover
+{
+	background-color: rgba(255,255,255,0.25);
+	border: solid 1px white;
+	border-radius: 5px;
+}
+
+.tabs li a
+{
+	color: white;
+	text-decoration: none;
+	width: auto;
+}
+
+.item_link:hover
+{
+	background-color: rgba(255,255,255,0.25);
+}
+
+.heading
+{
+	text-align: center;
+	font-size: 24pt;
+	padding-top: 25px;
+	padding-bottom: 15px;
+}
+
+.info
+{
+	padding-top: 75px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-bottom: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	font-size: 20pt;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 500;
+	border-right: solid 3px white;
+	border-left: solid 3px white;
+	color: rgba(0,0,0,0.5);
+	background-color: rgba(255,255,255,0.45);
+	cursor: default;
+	height: auto;
+}
+
+.info p
+{
+	text-indent: 50px;
+}
+
+.campustable
+{
+	font-size: 14pt;
+	text-align: center;
+	padding: 5px;
+	border: solid 1px black;
+	border-collapse: collapse;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.campustable th
+{
+	padding: 10px;
+}
+
+.campustable td
+{
+	padding: 10px;
+	border: solid 1px black;
+}
+
+.campustable td a
+{
+	text-decoration: none;
+	color: #0d0873;
+	cursor: pointer;
+}
+
+.product_grid
+{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.product_grid li
+{
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	border: solid black;
+	overflow: hidden;
+	float: left;
+}
+
+.image
+{
+	height: auto;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.map
+{
+	width: 100%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
