@@ -11,4 +11,6 @@
 	//$stylesheet_url = "http://www.personal.psu.edu/asm5453/css/stylesheet.css";
 	//$stylesheet_url = "http://www.personal.psu.edu/asm5453/css/stylesheet.css"
 
+	 $min_bid_increment = 2;
+
 ?>

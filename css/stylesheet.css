@@ -19,6 +19,16 @@ body
 	user-select: none;
 }
 
+form#buttons_form {
+    display: inline-flex;
+}
+
+.alert
+{
+	margin-top: 70px;
+	text-align: center;
+}
+
 .tabs
 {
 	position: fixed;
@@ -71,9 +81,16 @@ body
 	width: auto;
 }
 
-.item_link:hover
+.item_link li:hover
 {
-	background-color: rgba(255,255,255,0.25);
+	background-color: white;
+}
+
+.item_link li
+{
+	color: black;
+	text-decoration: none;
+	width: auto;
 }
 
 .heading
@@ -150,6 +167,7 @@ body
 
 .product_grid li
 {
+	margin: 5px;
 	display: inline-block;
 	width: 200px;
 	height: 200px;

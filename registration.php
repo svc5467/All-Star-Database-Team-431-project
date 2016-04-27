@@ -1,17 +1,17 @@
 <?php
 	$seller_id = uniqid();
-	$unique_id = uniqid();
-	$sum = 0;
+	//$unique_id = uniqid();
+	//$sum = 0;
 	
 	// convert the uniqueid to an integer
-	for($i = 0; $i < strlen($unique_id); $i++)
-	{
-		if((ord($unique_id[$i])-96) < 0) // integer character
-			$sum += intval($unique_id[$i]) * (10** $i);
-		else
-			$sum += (ord($unique_id[$i])-96) * (10**$i);
-	}
-	$address_id = $sum;
+//	for($i = 0; $i < strlen($unique_id); $i++)
+//	{
+//		if((ord($unique_id[$i])-96) < 0) // integer character
+//			$sum += intval($unique_id[$i]) * (10** $i);
+//		else
+//			$sum += (ord($unique_id[$i])-96) * (10**$i);
+//	}
+//	$address_id = $sum;
 ?>
 <!DOCTYPE html>
 <html lang="en">

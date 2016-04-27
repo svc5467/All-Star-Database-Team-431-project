@@ -1,0 +1,24 @@
+table
+{
+	width: 100%;
+}
+th
+{
+	padding: 5px;
+    text-align: center;
+}
+td
+{
+	/*width: 50%;*/
+	padding: 5px;
+    text-align: center;
+}
+.key_td
+{
+	width: 25%;
+    text-align: left;
+}
+.table_div
+{
+	width: 100%;
+}

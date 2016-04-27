@@ -41,7 +41,8 @@
 <html>
 	<head>
 		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/stylesheet.css";?>"/>
-		
+		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/assets/bootstrap-3.3.6-dist/css/bootstrap.css";?>"/>	
+		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/table_style.css";?>"/>	
 	</head>
 	
 	<body>
@@ -57,11 +58,29 @@
 			<br>
 			<?php
 								
-					echo '<div><ul>';
-					
+					echo '<div class="table_div">'
+						.'<table class="table-striped table-bordered">'
+						.'<thead>'
+							.'<th>'
+								.'Attribute'
+							.'</th>'
+							.'<th>'
+								.'Value'
+							.'</th>'
+						.'</thead>'
+						.'<tbody>';
+
 						foreach($user_seller as $key => $var)
 						{
-							echo '<li>' . $key . ': '. $var;
+							echo '<tr>' 
+									.'<td class="key_td">'
+										. $key 
+									.'</td>'
+									.'<td>'
+										. $var
+									.'</td>'
+								.'</tr>';
+
 						}
 				/*		foreach($this_user_seller as $key => $var)
 						{
@@ -76,7 +95,9 @@
 				*/
 					#TODO: figure-out URL convention for each individual item. needed to get to item page.
 					#		likely pass ID thru URL then parsed for dynamimc pages
-					echo '</ul></div>';
+					echo '</tbody>'
+						.'</table>'
+						.'</div>';
 			//	}
 			?>
 			
