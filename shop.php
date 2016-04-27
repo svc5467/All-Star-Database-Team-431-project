@@ -1,16 +1,12 @@
 <?php
-	include "variables.php";
-	include "authenticate.php";
-
-	$dbh = new PDO("sqlite:".$database_url);
-	$itemRows = $dbh->query("SELECT title, buy_it_now_price, description FROM Items");
+	$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
+	$itemRows = $dbh->query("SELECT item_id, title, buy_it_now_price, description FROM Items");
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/stylesheet.css";?>"/>
-		
+		<link rel="Stylesheet" type="text/css" href="http://www.personal.psu.edu/asm5453/css/stylesheet.css"/>
 	</head>
 	
 	<body>
@@ -22,27 +18,28 @@
 			<div class="heading">
 				All-Star Database
 			</div>
-			
-	<br>
-	<?php
-						
-		while($row = $itemRows->fetch(PDO::FETCH_ASSOC)) {
-			echo '<div><ul>';
-			foreach($row as $key => $var)
-			{
-				echo '<li>' . $key . ': '. $var;
-			}
-			#TODO: figure-out URL convention for each individual item. needed to get to item page.
-			#		likely pass ID thru URL then parsed for dynamimc pages
-			echo '</ul></div>';
-		}
-?>
-			
+			<br>
+	
+			<ul class = "product_grid">
+				<?php
+					while($row = $itemRows->fetch(PDO::FETCH_ASSOC)) 
+					{
+				?>
+					<a class = "item_link" href = "http://www.personal.psu.edu/asm5453/product?product_id=<?php echo $row['item_id'];?>">
+						<li>
+							Title: <?php echo $row['title'];?> <br>
+							Price: <?php echo $row['buy_it_now_price'];?> <br>
+							Description: <?php echo $row['description'];?> 
+						</li>
+					</a>
+				<?php
+					}
+				?>
+			</ul>
+		<br>
+		<br>
 		</div>
 	</body>
 
 </html>
-
-
-
 
