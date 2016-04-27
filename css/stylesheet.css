@@ -19,16 +19,6 @@ body
 	user-select: none;
 }
 
-form#buttons_form {
-    display: inline-flex;
-}
-
-.alert
-{
-	margin-top: 70px;
-	text-align: center;
-}
-
 .tabs
 {
 	position: fixed;
