@@ -3,7 +3,7 @@
 	$Squery = $_POST["q2"];
 	$Aquery = $_POST["q3"];
 	
-	$dbh = new PDO("sqlite:".$database_url);
+	$dbh = new PDO("sqlite:c:/xampp/htdocs/allStarDB/allstar.sqlite");
 	$AResult = $dbh->query($Aquery);
 	//$SResult = $dbh->exec($Squery);
 	//$UResult = $dbh->exec($Uquery);

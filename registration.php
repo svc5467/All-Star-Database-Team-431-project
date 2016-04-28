@@ -1,17 +1,17 @@
 <?php
 	$seller_id = uniqid();
-	//$unique_id = uniqid();
-	//$sum = 0;
+	$unique_id = uniqid();
+	$sum = 0;
 	
 	// convert the uniqueid to an integer
-//	for($i = 0; $i < strlen($unique_id); $i++)
-//	{
-//		if((ord($unique_id[$i])-96) < 0) // integer character
-//			$sum += intval($unique_id[$i]) * (10** $i);
-//		else
-//			$sum += (ord($unique_id[$i])-96) * (10**$i);
-//	}
-//	$address_id = $sum;
+	for($i = 0; $i < strlen($unique_id); $i++)
+	{
+		if((ord($unique_id[$i])-96) < 0) // integer character
+			$sum += intval($unique_id[$i]) * (10** $i);
+		else
+			$sum += (ord($unique_id[$i])-96) * (10**$i);
+	}
+	$address_id = $sum;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,8 +109,8 @@
 			var queries2 = [") VALUES (", ") VALUES (", ") VALUES ("];
 			
 			queries2[0] += "'" + seller_id + "'"; // "...) VALUES ($seller_id..."
-			queries2[1] += "'" + seller_id + "', '" + address_id + "'"; // "...) VALUES ($seller_id, $address_id..."
-			queries2[2] += "'" + seller_id + "'"; // "...) VALUES ($seller_id..."
+			queries2[1] += "'" + seller_id + "', " + address_id + ""; // "...) VALUES ($seller_id, $address_id..."
+			queries2[2] += "'" + address_id + "'"; // "...) VALUES ($address_id..."
 					
 			// pull user info from the form.
 			for(i = 0; i < x.length; i++)
@@ -127,22 +127,24 @@
 				if (x.elements[i].value != "" && table >= 0)
 				{
 					queries[table] += ", " + x.elements[i].name;
-					queries2[table] += "', '" + x.elements[i].value;
+					if(x.elements[i].type != "number")
+						queries2[table] += ", '" + x.elements[i].value + "'";
+					else
+						queries2[table] += ", " + x.elements[i].value;
 				}
 			}
 			
 			// create queries
-			var Uquery = queries[0] + queries2[0] + "');";
-			var Squery = queries[1] + queries2[1] + "');";
-			var Aquery = queries[2] + queries2[2] + "');";
-			
+			var Uquery = queries[0] + queries2[0] + ");";
+			var Squery = queries[1] + queries2[1] + ");";
+			var Aquery = queries[2] + queries2[2] + ");";
 			request = $.ajax({
 				url: "http://localhost:8080/AllStarDB/registrationScript.php",
 				type: "post",
 				data: {q1:Uquery, q2:Squery, q3:Aquery},
 				
 				success: function(html){
-					alert(html);
+					alert("Successful User Registration!");
 				},
 				failure: function(html){
 					alert(html);
