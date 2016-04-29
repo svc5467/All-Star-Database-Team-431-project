@@ -5,8 +5,9 @@
 	
 	$dbh = new PDO("sqlite:c:/xampp/htdocs/allStarDB/allstar.sqlite");
 	$AResult = $dbh->query($Aquery);
-	//$SResult = $dbh->exec($Squery);
-	//$UResult = $dbh->exec($Uquery);
-	
+	echo $dbh->errorCode();
+	$SResult = $dbh->exec($Squery);
+	echo $dbh->errorCode();
+	$UResult = $dbh->exec($Uquery);
 	echo $dbh->errorCode();
 ?>
