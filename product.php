@@ -93,9 +93,9 @@ function insert_into_db($insert, $dbh, $success_msg, $fail_msg)
 	}else
 	{	
 		echo $fail_msg."<br>";
-		echo "<br>msg: " . $dbh->errorInfo()[0];
-		echo "<br>msg: " . $dbh->errorInfo()[1];
-		echo "<br>msg: " . $dbh->errorInfo()[2];
+		// echo "<br>msg: " . $dbh->errorInfo()[0];
+		// echo "<br>msg: " . $dbh->errorInfo()[1];
+		// echo "<br>msg: " . $dbh->errorInfo()[2];
 		return false;
 	}
 
@@ -110,10 +110,10 @@ function update_db($update, $dbh, $success_msg, $fail_msg)
 		return true;
 	}else
 	{
-		echo $fail_msg."<br>";
-		echo "<br>msg: " . $dbh->errorInfo()[0];
-		echo "<br>msg: " . $dbh->errorInfo()[1];
-		echo "<br>msg: " . $dbh->errorInfo()[2];
+		 echo $fail_msg."<br>";
+		// echo "<br>msg: " . $dbh->errorInfo()[0];
+		// echo "<br>msg: " . $dbh->errorInfo()[1];
+		// echo "<br>msg: " . $dbh->errorInfo()[2];
 		return false;
 	}
 }

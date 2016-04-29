@@ -24,7 +24,14 @@ body
 	background-color: gray;
 }*/
 
+.bid_btn_div.form-group {
+    margin-left: 20px;
+}
 
+.menu_form
+{
+	display:inline-flex;
+}
 .redeem_div
 {
 	width: 100%;

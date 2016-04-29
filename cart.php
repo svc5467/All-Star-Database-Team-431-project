@@ -33,6 +33,7 @@
 		<?php
 			include "assets/includes.php";
 		?>
+		<link rel="Stylesheet" type="text/css" href="css/forms.css"/>
 	</head>
 	
 	<body>

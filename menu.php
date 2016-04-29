@@ -6,7 +6,7 @@
 	<li><a href="<?php echo $website_url?>/logout.php	">Logout		</a></li>
 	<li>
 		<div class="search_bar">
-			<form>
+			<form class="menu_form" >
 				<input type="text" name="search" class="search_input" value="Search:" onblur="if (this.value == '') {this.value = 'Search:';}" onfocus="if (this.value == 'Search:') {this.value = '';}">
 				<button type="button" name="search_btn"  id="search_btn"  class="btn btn-primary" id="submit_btn" onclick="search_redirect()" value="search">Go</button>
 			</form>
