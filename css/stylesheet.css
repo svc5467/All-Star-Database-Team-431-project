@@ -23,6 +23,37 @@ body
 {
 	background-color: gray;
 }*/
+
+
+.redeem_div
+{
+	width: 100%;
+    text-align: center;
+}
+form.form-signin {
+    margin: auto;
+    text-align: center;
+}
+fieldset.form-group {
+    margin: auto;
+}
+
+.create_accounts
+{
+	text-align:center;
+}
+.big_container
+{
+	text-align: center;
+	width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+.registration_form
+{
+	margin:auto;
+}
+
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #ffcc99;
   cursor: pointer;

@@ -1,6 +1,6 @@
 <?php
-	include "variables.php";
-	include "authenticate.php";
+	include "assets/variables.php";
+	include "assets/authenticate.php";
 	
 	$dbh =  new PDO("sqlite:".$database_url);
 

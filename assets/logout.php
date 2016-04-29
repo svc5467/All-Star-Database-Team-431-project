@@ -1,9 +1,9 @@
 <?php
-	include "assets/variables.php";
+	include "variables.php";
 	
+	// setcookie('username', "", time()-1000);
 	// echo 'Location: '.$website_url.'/index.php';
 	unset($_COOKIE['username']);
     setcookie('username', null, -1, '/');
-	setcookie('username', "", time()-1000);
-	header('Location: '.$website_url.'/index.php');
+	header('Location: '.$website_url.'/index_orig.php');
 ?>

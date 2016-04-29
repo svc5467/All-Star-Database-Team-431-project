@@ -1,6 +1,8 @@
 <?php
-	include "variables.php";
-	include "authenticate.php";
+	include "assets/variables.php";
+	include "assets/authenticate.php";
+
+	
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +22,17 @@
 				<?php echo $this_user_seller["login_name"].", Enter a Giftcard" ?>
 			</div>
 	
-			<div class="form-group">
-				  <label for="gard_id">Gift Card:</label>
-				  <input type="text" class="form-control" id="gard_id">
+			<div class="redeem_div">
+				<form method="get" autocomplete="off" class="form-signin" action="shop.php">
+					<fieldset class="form-group">
+						<label for="gard_id">Gift Card:</label>
+						<input type="text" class="form-control" id="gard_id" required>
+						<input type="submit" class="links btn btn-lg btn-primary btn-block" value="Submit" onclick="window.">
+					</fieldset>
+				</form>
 			</div>
+
+
 		</div>
 	</body>
 

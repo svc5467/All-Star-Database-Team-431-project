@@ -11,8 +11,8 @@ function selecct_query_multi($sql,$dbh)
 }
 
 
-	include "variables.php";
-	include "authenticate.php";
+	include "assets/variables.php";
+	include "assets/authenticate.php";
 	
 	$dbh = new PDO("sqlite:".$database_url);
 	$username = $_COOKIE['username'];
@@ -152,7 +152,6 @@ function selecct_query_multi($sql,$dbh)
 									. $var
 								.'</td>'
 							.'</tr>';
-
 					}
 			
 				echo '</tbody>'

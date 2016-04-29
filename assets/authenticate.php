@@ -1,4 +1,6 @@
 <?php
+	// echo "in auth";
+	// echo "in auth ----------".$_COOKIE['username'];
 	if (!isset($_COOKIE['username'] ) )
 	{
      	header('Location: index.php?access_denied=true');

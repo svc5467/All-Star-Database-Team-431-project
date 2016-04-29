@@ -1,5 +1,5 @@
 <?php
-	include "assets/includes.php";
+	include "assets/variables.php";
 	$seller_id = uniqid();
 	$unique_id = uniqid();
 	$sum = 0;
@@ -8,9 +8,9 @@
 	for($i = 0; $i < strlen($unique_id); $i++)
 	{
 		if((ord($unique_id[$i])-96) < 0) // integer character
-			$sum += intval($unique_id[$i]) * (10** $i);
+			$sum += intval($unique_id[$i]) * pow(10, $i);
 		else
-			$sum += (ord($unique_id[$i])-96) * (10**$i);
+			$sum += (ord($unique_id[$i])-96) * pow(10, $i);
 	}
 	$address_id = $sum;
 ?>
@@ -22,78 +22,79 @@
 	<title>User Registration</title>
 	<meta name="description" content="User Registration">
 	<meta name="author" content="Brent Riva">
-	
-	<link rel="stylesheet" href="css/stylesheet.css">
+	<?php
+
+		include "assets/includes.php";
+	?>
+	<!-- <link rel="stylesheet" href="css/stylesheet.css"> -->
 	<!--[if lt IE9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 
 <body>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<h1>User Registration:</h1>
-	<form id="u_reg" class="registration_form" align="center" action="" method="post" name="registration_form">
-		<ul>
-			<li>
+	<div class="big_container">
+		<h1>User Registration:</h1>
+		<form id="u_reg" class="registration_form"  action="javascript:register()" method="post" name="registration_form">
+			<div class = "form-group">
 				<h2>User Information</h2>
 				<span class="required_notification">* Denotes Required Field</span>
-			</li>
-			<li>
+			</div>
+			<div class = "form-group">
 				<label for="login_name" required>Username*:</label>
-				<input title="S" type="text" name="login_name" />
-			</li>
-			<li>
+				<input class="form-control" title="S" type="text" name="login_name" required/>
+			</div>
+			<div class = "form-group">
 				<label for="pass" required>Password*:</label>
-				<input title="S" type="password" name="pass" />
-			</li>
-			<li>
+				<input class="form-control" title="S" type="password" name="pass" required/>
+			</div>
+			<div class = "form-group">
 				<label for="email" required>Email Address*:</label>
-				<input title="U" type="email" name="email" placeholder="Doe.John@gmail.com" />
-			</li>
-			<li>
+				<input class="form-control" title="U" type="email" name="email" placeholder="Doe.John@gmail.com" required/>
+			</div>
+			<div class = "form-group">
 				<label for="first_name">First Name:</label>
-				<input title="U" type="text" name="first_name" />
-			</li>
-			<li>
+				<input class="form-control" title="U" type="text" name="first_name" />
+			</div>
+			<div class = "form-group">
 				<label for="last_name">Last Name:</label>
-				<input title="U" type="text" name="last_name" />
-			</li>
-			<li>
+				<input class="form-control" title="U" type="text" name="last_name" />
+			</div>
+			<div class = "form-group">
 				<label for="birthday" required>Birthday*:</label>
-				<input title="U" type="date" name="birthday" placeholder="YYYY-MM-DD"/>
-			</li>
-			<li>
+				<input class="form-control" title="U" type="date" name="birthday" placeholder="YYYY-MM-DD"required/>
+			</div>
+			<div class = "form-group">
 				<label for="annual_income">Annual Income:</label>
-				<input title="U" type="number" name="annual_income" />
-			</li>
-			<li>
+				<input class="form-control" title="U" type="number" name="annual_income" />
+			</div>
+			<div class = "form-group">
 				<label for="gender">Sex:</label>
-				<input title="U" type="text" name="gender" />
-			</li>
-			<li>			
+				<input class="form-control" title="U" type="text" name="gender" />
+			</div>
+			<div class = "form-group">
 				<h3>Address Info</h3>
-			</li>
-			<li>
+			</div>
+			<div class = "form-group">
 				<label for="street" required>Street*:</label>
-				<input title="A" type="text" name="street" />
-			</li>
-			<li>
+				<input class="form-control" title="A" type="text" name="street" required/>
+			</div>
+			<div class = "form-group">
 				<label for="city" required>City*:</label>
-				<input title="A" type="text" name="city" />
-			</li>
-			<li>
+				<input class="form-control" title="A" type="text" name="city" required/>
+			</div>
+			<div class = "form-group">
 				<label for="zipcode" required>ZipCode*:</label>
-				<input title="A" type="number" name="zipcode" />
-			</li>
-			<li>
-				<input type="button" value="Submit" onclick="register()"/>
-			</li>
-		</ul>	
-	</form>
-	
+				<input class="form-control" title="A" type="number" name="zipcode" required/>
+			</div>
+			<div class = "form-group">
+				<input class="form-control btn btn-primary btn-lrg"  type="submit" value="Submit"/>
+			</div>
+		</form>
+	</div>
 	<script type="text/javascript">
 		function register() {			
-			alert("Register was called");
+			//alert("Register was called");
 			
 			var request;
 			
@@ -102,8 +103,9 @@
 			var x = document.getElementById("u_reg");
 			
 			// pull randomly generated IDs from PHP
-			var seller_id = "<?php echo $seller_id; ?>";
+			var seller_id = "<?php echo $seller_id; ?>;";
 			var address_id = <?php echo $address_id; ?>;
+			var website_url = "<?php echo $website_url; ?>";
 			
 			// Queries for: Users, Sellers, Addresses (Respectively)
 			var queries = ["INSERT INTO Users(user_id, balance", "INSERT INTO Sellers(seller_id, address_id, seller_type, revenue", "INSERT INTO Addresses (address_id"];
@@ -141,12 +143,13 @@
 			var Aquery = queries[2] + queries2[2] + ");";
 
 			request = $.ajax({
-				url: "http://localhost:8080/AllStarDB/registrationScript.php",
+				url: (website_url+"/registrationScript.php"),
 				type: "post",
 				data: {q1:Uquery, q2:Squery, q3:Aquery},
 				
 				success: function(html){
 					alert("Successful User Registration!");
+					window.location.href = website_url+"/index.php";
 				},
 				failure: function(html){
 					alert(html);

@@ -1,5 +1,5 @@
 <?php
-	include "variables.php";
+	include "assets/variables.php";
 
 	$error = "";
 	$redirection_notice = "You must login to access that page";
@@ -60,36 +60,64 @@
 ?>
 
 <html>
+	<head>
+	
+
+
+    <link rel="Stylesheet" href="assets/bootstrap-3.3.6-dist/css/bootstrap.css"/>
+	<link href="css/stylesheet.css" rel="stylesheet">
+	<link href="css/signin.css" rel="stylesheet">
+
+	</head>
 	<body>
-		<h1>
-			Login
-		</h1>
-		<h6>
-			<?php 
-				echo $error; 
-				if ($access_denied == "true")
-					echo $redirection_notice
-			?>
-		</h6>
+
+		<?php 
+			if ($error != "")
+			{
+				echo '<div class="alert alert-danger">'
+						.$error
+					."</div>";
+			}
+
+			if ($access_denied == "true")
+			{
+				echo '<div class="alert alert-danger">' 
+						.$redirection_notice
+					."</div>";
+			}
+		?>
+
 		
-		<form method="post" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-			<table>
-				<tr>
-					<td>
-						<input type="text" name="username" maxlength="10" size="15" placeholder="Username"
-						 value="<?php echo $username;?>">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="password" name="password" maxlength="50" size="15" placeholder="Password"> 
-					</td>
-				</tr>
-			</table>
-			<p>
-				<!--<a href="javascript:history.go(-1)" class="links">&#8592; Back</a>-->
-				<input type="submit" class="links" value="Login">
-			</p>
-		</form>
+			
+
+		<div class="container">
+			<form method="post" autocomplete="off" class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<h2 class="form-signin-heading">Log Into AllstarDB</h2>
+					
+                <label for="inputEmail" class="sr-only">Email address</label>
+				<input type="text" class="form-control" name="username" maxlength="10" size="15" placeholder="Username"	 autofocus="" required="" value="<?php echo $username;?>">
+
+				<label for="inputPassword" class="sr-only">Password</label>
+				<input type="password" class="form-control" id="inputPassword" name="password" maxlength="50" size="15" placeholder="Password" required=""> 
+
+				<input type="submit" class="links btn btn-lg btn-primary btn-block" value="Login">
+
+			</form>
+
+            <div class = "create_accounts">
+
+                <a class = "btn btn-primary" type="button" href="registration.php">Create User Account</a>
+                <a class = "btn btn-primary" type="button" href="supplierReg.php">Create Supplier Account</a>
+
+            </div>
+          
+
+
+  	  	</div> <!-- /container -->
+
+
+
+ 
 	</body>
 </html>
+

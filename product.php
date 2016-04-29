@@ -121,8 +121,8 @@ function update_db($update, $dbh, $success_msg, $fail_msg)
 				
 
 
-include "variables.php";
-include "authenticate.php";
+include "assets/variables.php";
+include "assets/authenticate.php";
 $item_id;
 $item;
 $dbh;
@@ -365,6 +365,7 @@ function print_table_row($key,$var)
 		<?php
 			include "assets/includes.php";
 		?>
+		<link rel="Stylesheet" type="text/css" href="css/forms.css"/>
 		
 	</head>
 	
