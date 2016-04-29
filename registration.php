@@ -7,22 +7,27 @@ else
 {
 	// 
 	$seller_id = uniqid();
+<<<<<<< HEAD
 }
 	
 
 
 	//$unique_id = uniqid();
 	//$sum = 0;
+=======
+	$unique_id = uniqid();
+	$sum = 0;
+>>>>>>> 41bd7a299fc9ba7df566ae6f04991b4c24106dad
 	
 	// convert the uniqueid to an integer
-//	for($i = 0; $i < strlen($unique_id); $i++)
-//	{
-//		if((ord($unique_id[$i])-96) < 0) // integer character
-//			$sum += intval($unique_id[$i]) * (10** $i);
-//		else
-//			$sum += (ord($unique_id[$i])-96) * (10**$i);
-//	}
-//	$address_id = $sum;
+	for($i = 0; $i < strlen($unique_id); $i++)
+	{
+		if((ord($unique_id[$i])-96) < 0) // integer character
+			$sum += intval($unique_id[$i]) * (10** $i);
+		else
+			$sum += (ord($unique_id[$i])-96) * (10**$i);
+	}
+	$address_id = $sum;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +38,7 @@ else
 	<meta name="description" content="User Registration">
 	<meta name="author" content="Brent Riva">
 	
-	<link rel="stylesheet" href="css/styles.css?v=1.0">
+	<link rel="stylesheet" href="css/stylesheet.css">
 	<!--[if lt IE9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -49,15 +54,15 @@ else
 				<span class="required_notification">* Denotes Required Field</span>
 			</li>
 			<li>
-				<label for="login_name" required>*Username:</label>
+				<label for="login_name" required>Username*:</label>
 				<input title="S" type="text" name="login_name" />
 			</li>
 			<li>
-				<label for="pass" required>*Password:</label>
+				<label for="pass" required>Password*:</label>
 				<input title="S" type="password" name="pass" />
 			</li>
 			<li>
-				<label for="email" required>*Email Address:</label>
+				<label for="email" required>Email Address*:</label>
 				<input title="U" type="email" name="email" placeholder="Doe.John@gmail.com" />
 			</li>
 			<li>
@@ -69,7 +74,7 @@ else
 				<input title="U" type="text" name="last_name" />
 			</li>
 			<li>
-				<label for="birthday" required>*Birthday:</label>
+				<label for="birthday" required>Birthday*:</label>
 				<input title="U" type="date" name="birthday" placeholder="YYYY-MM-DD"/>
 			</li>
 			<li>
@@ -81,18 +86,18 @@ else
 				<input title="U" type="text" name="gender" />
 			</li>
 			<li>			
-				<h3>*Address Info</h3>
+				<h3>Address Info</h3>
 			</li>
 			<li>
-				<label for="street" required>*Street:</label>
+				<label for="street" required>Street*:</label>
 				<input title="A" type="text" name="street" />
 			</li>
 			<li>
-				<label for="city" required>*City:</label>
+				<label for="city" required>City*:</label>
 				<input title="A" type="text" name="city" />
 			</li>
 			<li>
-				<label for="zipcode" required>*ZipCode:</label>
+				<label for="zipcode" required>ZipCode*:</label>
 				<input title="A" type="number" name="zipcode" />
 			</li>
 			<li>
@@ -120,8 +125,8 @@ else
 			var queries2 = [") VALUES (", ") VALUES (", ") VALUES ("];
 			
 			queries2[0] += "'" + seller_id + "'"; // "...) VALUES ($seller_id..."
-			queries2[1] += "'" + seller_id + "', '" + address_id + "'"; // "...) VALUES ($seller_id, $address_id..."
-			queries2[2] += "'" + seller_id + "'"; // "...) VALUES ($seller_id..."
+			queries2[1] += "'" + seller_id + "', " + address_id + ""; // "...) VALUES ($seller_id, $address_id..."
+			queries2[2] += "'" + address_id + "'"; // "...) VALUES ($address_id..."
 					
 			// pull user info from the form.
 			for(i = 0; i < x.length; i++)
@@ -138,23 +143,32 @@ else
 				if (x.elements[i].value != "" && table >= 0)
 				{
 					queries[table] += ", " + x.elements[i].name;
-					queries2[table] += "', '" + x.elements[i].value;
+					if(x.elements[i].type != "number")
+						queries2[table] += ", '" + x.elements[i].value + "'";
+					else
+						queries2[table] += ", " + x.elements[i].value;
 				}
 			}
 			
 			// create queries
+<<<<<<< HEAD
 			var Uquery = queries[0] + queries2[0] + "');";
 			var Squery = queries[1] + queries2[1] + "');";
 			var Aquery = queries[2] + queries2[2] + "');";
 			
 
+=======
+			var Uquery = queries[0] + queries2[0] + ");";
+			var Squery = queries[1] + queries2[1] + ");";
+			var Aquery = queries[2] + queries2[2] + ");";
+>>>>>>> 41bd7a299fc9ba7df566ae6f04991b4c24106dad
 			request = $.ajax({
 				url: "http://localhost:8080/AllStarDB/registrationScript.php",
 				type: "post",
 				data: {q1:Uquery, q2:Squery, q3:Aquery},
 				
 				success: function(html){
-					alert(html);
+					alert("Successful User Registration!");
 				},
 				failure: function(html){
 					alert(html);

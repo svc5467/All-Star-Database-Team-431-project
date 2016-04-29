@@ -197,3 +197,8 @@ body
 	margin-right: auto;
 	display: block;
 }
+
+form { display: table; }
+li { display: table-row; }
+label { display: table-cell; }
+input { display: table-cell; }
