@@ -19,8 +19,8 @@
 <head>
 	<meta charset="utf-8">
 	
-	<title>User Registration</title>
-	<meta name="description" content="User Registration">
+	<title>Supplier Registration</title>
+	<meta name="description" content="Supplier Registration">
 	<meta name="author" content="Brent Riva">
 	
 	<link rel="stylesheet" href="css/stylesheet.css">
@@ -31,11 +31,11 @@
 
 <body>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<h1>User Registration:</h1>
+	<h1>Supplier Registration:</h1>
 	<form id="u_reg" class="registration_form" align="center" action="" method="post" name="registration_form">
 		<ul>
 			<li>
-				<h2>User Information</h2>
+				<h2>Supplier Information</h2>
 				<span class="required_notification">* Denotes Required Field</span>
 			</li>
 			<li>
@@ -47,28 +47,12 @@
 				<input title="S" type="password" name="pass" />
 			</li>
 			<li>
-				<label for="email" required>Email Address*:</label>
-				<input title="U" type="email" name="email" placeholder="Doe.John@gmail.com" />
+				<label for="phone" required>Phone Number*:</label>
+				<input title="U" type="tel" name="phone"/>
 			</li>
 			<li>
-				<label for="first_name">First Name:</label>
-				<input title="U" type="text" name="first_name" />
-			</li>
-			<li>
-				<label for="last_name">Last Name:</label>
-				<input title="U" type="text" name="last_name" />
-			</li>
-			<li>
-				<label for="birthday" required>Birthday*:</label>
-				<input title="U" type="date" name="birthday" placeholder="YYYY-MM-DD"/>
-			</li>
-			<li>
-				<label for="annual_income">Annual Income:</label>
-				<input title="U" type="number" name="annual_income" />
-			</li>
-			<li>
-				<label for="gender">Sex:</label>
-				<input title="U" type="text" name="gender" />
+				<label for="name" required>Name:</label>
+				<input title="U" type="text" name="name" />
 			</li>
 			<li>			
 				<h3>Address Info</h3>
@@ -106,11 +90,11 @@
 			var address_id = <?php echo $address_id; ?>;
 			
 			// Queries for: Users, Sellers, Addresses (Respectively)
-			var queries = ["INSERT INTO Users(user_id, balance", "INSERT INTO Sellers(seller_id, address_id, seller_type, revenue", "INSERT INTO Addresses (address_id"];
+			var queries = ["INSERT INTO Suppliers(supplier_id", "INSERT INTO Sellers(seller_id, address_id, seller_type, revenue", "INSERT INTO Addresses (address_id"];
 			var queries2 = [") VALUES (", ") VALUES (", ") VALUES ("];
 			
-			queries2[0] += "'" + seller_id + "', 0"; // "...) VALUES ($seller_id..."
-			queries2[1] += "'" + seller_id + "', " + address_id + ", 'User', 0"; // "...) VALUES ($seller_id, $address_id..."
+			queries2[0] += "'" + seller_id + "'"; // "...) VALUES ($seller_id..."
+			queries2[1] += "'" + seller_id + "', " + address_id + ", 'Supplier', 0"; // "...) VALUES ($seller_id, $address_id..."
 			queries2[2] += "'" + address_id + "'"; // "...) VALUES ($address_id..."
 					
 			// pull user info from the form.
@@ -136,9 +120,14 @@
 			}
 			
 			// create queries
-			var Uquery = queries[0] + queries2[0] + ");";
-			var Squery = queries[1] + queries2[1] + ");";
+			var Uquery = queries[0] + queries2[0] + ");";			
+			var Squery = queries[1] + queries2[1] + ");";			
 			var Aquery = queries[2] + queries2[2] + ");";
+			
+			alert(Aquery);
+			alert(Squery);
+			alert(Uquery);
+			
 			request = $.ajax({
 				url: "http://localhost:8080/AllStarDB/registrationScript.php",
 				type: "post",
@@ -146,6 +135,7 @@
 				
 				success: function(html){
 					alert("Successful User Registration!");
+					alert(html);
 				},
 				failure: function(html){
 					alert(html);
