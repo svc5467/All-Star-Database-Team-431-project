@@ -4,7 +4,6 @@
 	$error = "";
 	$redirection_notice = "You must login to access that page";
 	$access_denied = "";
-	//$dbh = new PDO("sqlite:/pass/users/a/s/asm5453/www/allstar.sqlite");
 	$dbh = new PDO("sqlite:".$database_url);
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST")

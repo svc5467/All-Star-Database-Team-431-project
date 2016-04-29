@@ -126,7 +126,7 @@ include "authenticate.php";
 $item_id;
 $item;
 $dbh;
-$dbh = new PDO("sqlite:".$database_url);
+//$dbh = new PDO("sqlite:".$database_url);
 $is_buy_it_now;
 $max_bid;
 
