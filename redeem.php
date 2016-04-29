@@ -1,30 +1,7 @@
 <?php
 	include "variables.php";
 	include "authenticate.php";
-	
 	$dbh =  new PDO("sqlite:".$database_url);
-
-	$login_name =$_COOKIE['username'];
-	$sql = "SELECT * "
-			."FROM Sellers "
-			."WHERE login_name='$login_name' LIMIT 1";
-	
-	$user_seller = $dbh->query($sql);
-	$this_user_seller = $user_seller->fetch(PDO::FETCH_ASSOC);
-	$seller_id = $this_user_seller["seller_id"];
-
-
-	$sql2 = "SELECT * "
-			."From ("
-				."SELECT * "
-				."FROM ShoppingCarts "
-				."where user_id='".$seller_id."' "
-			.") As my_cart "
-			."JOIN items i "
-			."on i.item_id=my_cart.item_id ";
-	//echo $sql2;
-	$itemRows = $dbh->query($sql2);
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +11,6 @@
 			include "assets/includes.php";
 		?>
 	</head>
-	
 	<body>
 		<?php include "menu.php"; ?>
 		
@@ -68,4 +44,3 @@
 	</body>
 
 </html>
-

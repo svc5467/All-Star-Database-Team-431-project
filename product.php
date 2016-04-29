@@ -362,12 +362,10 @@ function print_table_row($key,$var)
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/stylesheet.css";?>"/>
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/assets/bootstrap-3.3.6-dist/css/bootstrap.css";?>"/>	
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/forms.css";?>"/>	
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/table_style.css";?>"/>	
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/table_style.css";?>"/>	
-		<script src="<?php echo $website_url."/assets/jquery-1.12.3.min.js";?>"></script>
+		<?php
+			include "assets/includes.php";
+		?>
+		
 	</head>
 	
 	<body>

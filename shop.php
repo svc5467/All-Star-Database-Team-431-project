@@ -1,14 +1,38 @@
 <?php
 	include "variables.php";
 	include "authenticate.php";
+	include "list_items.php";
 	$dbh =  new PDO("sqlite:".$database_url);
-	$itemRows = $dbh->query("SELECT item_id, title, buy_it_now_price, description FROM Items");
+
+	$itemRows;
+
+	if ($_SERVER["REQUEST_METHOD"] == "GET")
+	{
+		if(isset($_GET["search"]))
+		{
+			
+			$sql = "SELECT item_id, title, buy_it_now_price, description "
+					."FROM Items "
+					."where title like '%".$_GET["search"]."%' or description like '%".$_GET["search"]."%'" ;
+
+			$itemRows = $dbh->query($sql);
+		}else
+		{
+			// search not set, show all items
+			$itemRows = $dbh->query("SELECT item_id, title, buy_it_now_price, description FROM Items");
+		}
+	}else
+	{
+		// is post
+	}
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="Stylesheet" type="text/css" href="http://www.personal.psu.edu/asm5453/css/stylesheet.css"/>
+		<?php
+			include "assets/includes.php";
+		?>
 	</head>
 	
 	<body>
@@ -20,26 +44,9 @@
 			<div class="heading">
 				All-Star Database
 			</div>
-			<br>
-	
-			<ul class = "product_grid">
-				<?php
-					while($row = $itemRows->fetch(PDO::FETCH_ASSOC)) 
-					{
-				?>
-					<a class = "item_link" href = "<?php echo $website_url; ?>/product.php?product_id=<?php echo $row['item_id'];?>">
-						<li>
-							Title: <?php echo $row['title'];?> <br>
-							Price: <?php echo $row['buy_it_now_price'];?> <br>
-							Description: <?php echo $row['description'];?> 
-						</li>
-					</a>
-				<?php
-					}
-				?>
-			</ul>
-		<br>
-		<br>
+			<?php
+				list_items($itemRows,"Items");
+			?>
 		</div>
 	</body>
 

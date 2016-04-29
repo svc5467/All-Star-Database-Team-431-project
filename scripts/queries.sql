@@ -76,3 +76,8 @@ select login_name, pass from (select * from CreditCards inner join Sellers where
 #// get a suppliers pass and login_name
 # returns Sean|platea
 select login_name, pass from (select * from suppliers limit 1) INNER JOIN Sellers on supplier_id=seller_id;
+
+SELECT item_id, title, buy_it_now_price, description FROM Items where title like '%ut%' or description like '%ut%'
+
+
+	

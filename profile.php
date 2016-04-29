@@ -73,8 +73,6 @@ function selecct_query_multi($sql,$dbh)
 							.") as s "
 							."inner join Items i "
 							."where s.item_id = i.item_id";
-
-		
 		$items_bought_query = selecct_query_multi($items_bought_query, $dbh);
 
 		$credit_cards = selecct_query_multi($credit_card_sel, $dbh);
@@ -115,9 +113,9 @@ function selecct_query_multi($sql,$dbh)
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/stylesheet.css";?>"/>
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/assets/bootstrap-3.3.6-dist/css/bootstrap.css";?>"/>	
-		<link rel="Stylesheet" type="text/css" href="<?php echo $website_url."/css/table_style.css";?>"/>	
+		<?php
+			include "assets/includes.php";
+		?>
 	</head>
 	
 	<body>
@@ -284,9 +282,6 @@ function selecct_query_multi($sql,$dbh)
 						.'Quantity'
 					.'</th>'
 					.'<th>'
-						.'Total'
-					.'</th>'
-					.'<th>'
 						.'Date'
 					.'</th>'
 				.'</thead>'
@@ -304,9 +299,6 @@ function selecct_query_multi($sql,$dbh)
 						.'</td>'
 						.'<td>'
 							. $this_buy["quantity"]
-						.'</td>'
-						.'<td>'
-							.($this_buy["buy_price"]*$this_buy["quantity"])
 						.'</td>'
 						.'<td>'
 							. $sell_date->format('m/d/Y H:i:s')
