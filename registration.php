@@ -22,7 +22,7 @@
 	<meta name="description" content="User Registration">
 	<meta name="author" content="Brent Riva">
 	
-	<link rel="stylesheet" href="css/styles.css?v=1.0">
+	<link rel="stylesheet" href="css/stylesheet.css">
 	<!--[if lt IE9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -38,15 +38,15 @@
 				<span class="required_notification">* Denotes Required Field</span>
 			</li>
 			<li>
-				<label for="login_name" required>*Username:</label>
+				<label for="login_name" required>Username*:</label>
 				<input title="S" type="text" name="login_name" />
 			</li>
 			<li>
-				<label for="pass" required>*Password:</label>
+				<label for="pass" required>Password*:</label>
 				<input title="S" type="password" name="pass" />
 			</li>
 			<li>
-				<label for="email" required>*Email Address:</label>
+				<label for="email" required>Email Address*:</label>
 				<input title="U" type="email" name="email" placeholder="Doe.John@gmail.com" />
 			</li>
 			<li>
@@ -58,7 +58,7 @@
 				<input title="U" type="text" name="last_name" />
 			</li>
 			<li>
-				<label for="birthday" required>*Birthday:</label>
+				<label for="birthday" required>Birthday*:</label>
 				<input title="U" type="date" name="birthday" placeholder="YYYY-MM-DD"/>
 			</li>
 			<li>
@@ -70,18 +70,18 @@
 				<input title="U" type="text" name="gender" />
 			</li>
 			<li>			
-				<h3>*Address Info</h3>
+				<h3>Address Info</h3>
 			</li>
 			<li>
-				<label for="street" required>*Street:</label>
+				<label for="street" required>Street*:</label>
 				<input title="A" type="text" name="street" />
 			</li>
 			<li>
-				<label for="city" required>*City:</label>
+				<label for="city" required>City*:</label>
 				<input title="A" type="text" name="city" />
 			</li>
 			<li>
-				<label for="zipcode" required>*ZipCode:</label>
+				<label for="zipcode" required>ZipCode*:</label>
 				<input title="A" type="number" name="zipcode" />
 			</li>
 			<li>
