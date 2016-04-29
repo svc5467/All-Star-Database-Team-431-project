@@ -139,6 +139,7 @@
 			var Uquery = queries[0] + queries2[0] + ");";
 			var Squery = queries[1] + queries2[1] + ");";
 			var Aquery = queries[2] + queries2[2] + ");";
+
 			request = $.ajax({
 				url: "http://localhost:8080/AllStarDB/registrationScript.php",
 				type: "post",
