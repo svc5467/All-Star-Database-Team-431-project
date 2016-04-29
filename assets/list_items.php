@@ -55,4 +55,62 @@ function list_items($itemRows,$table_header)
 		.'</div>';
 }
 
+function display_single_sale($this_buy)
+{
+
+		$sell_date = new DateTime($this_buy["sale_date"]);
+		echo '<tr>' 
+				.'<td class="key_td">'
+					. $this_buy["title"]
+				.'</td>'
+				.'<td>'
+					. $this_buy["buy_price"]
+				.'</td>'
+				.'<td>'
+					. $this_buy["quantity"]
+				.'</td>'
+				.'<td>'
+					. $sell_date->format('m/d/Y H:i:s')
+				.'</td>'
+			.'</tr>';
+}
+
+function list_sale($items_sold, $header)
+{
+	echo '<div class="table_div">'
+					.'<table class="table table-striped">'
+						.'<thead>'
+							.'<tr >'
+								.'<th colspan="4">'
+									.$header
+								.'</th>'
+							.'</tr>'
+							.'<tr>'
+								.'<th>'
+									.'Title'
+								.'</th>'
+								.'<th>'
+									.'Sold for'
+								.'</th>'
+								.'<th>'
+									.'Quantity'
+								.'</th>'
+								.'<th>'
+									.'Date'
+								.'</th>'
+							.'</tr>'
+						.'</thead>'
+					.'<tbody>';
+
+			while(($this_buy = $items_sold->fetch(PDO::FETCH_ASSOC)))
+			{
+				display_single_sale($this_buy);
+			}
+
+			echo 		'</tbody>'
+					.'</table>'
+				.'</div>';
+						
+}
+
 ?>

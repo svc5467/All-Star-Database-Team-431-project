@@ -120,7 +120,8 @@ function selecct_query_multi($sql,$dbh)
 	
 	<body>
 		<?php include "menu.php"; ?>
-		
+		<?php include "assets/list_items.php" ?>
+
 		<!-- The "info" div is the meat of the body, it contains the general information of the page. -->
 		<div class="info">
 			<!-- The "heading" div styles the heading of each section to stand out more and make it very readable.-->
@@ -128,42 +129,41 @@ function selecct_query_multi($sql,$dbh)
 				
 			</div>
 			
-			<br>
 			<?php
 								
-					echo '<div class="table_div">'
-						.'<table class="table-striped table-bordered">'
-						.'<thead>'
-							.'<th>'
-								.'Attribute'
+				echo '<div class="table_div">'
+					.'<table class="table table-striped">'
+					.'<thead>'
+						.'<tr>'
+							.'<th colspan=2>'
+								.'Your Account Info'
 							.'</th>'
-							.'<th>'
-								.'Value'
-							.'</th>'
-						.'</thead>'
-						.'<tbody>';
+						.'</tr>'
+					.'</thead>'
+					.'<tbody>';
 
-						foreach($user_seller as $key => $var)
-						{
-							echo '<tr>' 
-									.'<td class="key_td">'
-										. $key 
-									.'</td>'
-									.'<td>'
-										. $var
-									.'</td>'
-								.'</tr>';
+					foreach($user_seller as $key => $var)
+					{
+						echo '<tr>' 
+								.'<td class="key_td">'
+									. $key 
+								.'</td>'
+								.'<td>'
+									. $var
+								.'</td>'
+							.'</tr>';
 
-						}
-				
-					echo '</tbody>'
-						.'</table>'
-						.'</div>';
-			?>
-
-			<?php
+					}
+			
+				echo '</tbody>'
+					.'</table>'
+					.'</div>';
+	
 				if( !$is_supplier)
 				{
+
+					echo "<br>";
+
 					echo '<div class="table_div">'
 						.'<table class="table-striped table-bordered">'
 						.'<thead>'
@@ -193,124 +193,100 @@ function selecct_query_multi($sql,$dbh)
 						.'</table>'
 						.'</div>';
 					
-					echo 'Items you Bought '
-						.'<div class="table_div">'
-						.'<table class="table-striped table-bordered">'
-						.'<thead>'
-							.'<th>'
-								.'Title'
-							.'</th>'
-							.'<th>'
-								.'Sold for'
-							.'</th>'
-							.'<th>'
-								.'Date'
-							.'</th>'
-						.'</thead>'
-						.'<tbody>';
+					echo "<br>"
+						."<hr>"
+						."<br>";
 
-					while(($this_buy = $items_bought_query->fetch(PDO::FETCH_ASSOC)))
-					{
-						$sell_date = new DateTime($this_buy["sale_date"]);
-						echo '<tr>' 
-								.'<td class="key_td">'
-									. $this_buy["title"]
-								.'</td>'
-								.'<td>'
-									. $this_buy["buy_price"]
-								.'</td>'
-								.'<td>'
-									. $sell_date->format('m/d/Y H:i:s')
-								.'</td>'
-							.'</tr>';
+					// echo 'Items you Bought '
+					// 	.'<div class="table_div">'
+					// 	.'<table class="table-striped table-bordered">'
+					// 	.'<thead>'
+					// 		.'<th>'
+					// 			.'Title'
+					// 		.'</th>'
+					// 		.'<th>'
+					// 			.'Sold for'
+					// 		.'</th>'
+					// 		.'<th>'
+					// 			.'Date'
+					// 		.'</th>'
+					// 	.'</thead>'
+					// 	.'<tbody>';
 
-					}
+					// while(($this_buy = $items_bought_query->fetch(PDO::FETCH_ASSOC)))
+					// {
+					// 	$sell_date = new DateTime($this_buy["sale_date"]);
+					// 	echo '<tr>' 
+					// 			.'<td class="key_td">'
+					// 				. $this_buy["title"]
+					// 			.'</td>'
+					// 			.'<td>'
+					// 				. $this_buy["buy_price"]
+					// 			.'</td>'
+					// 			.'<td>'
+					// 				. $sell_date->format('m/d/Y H:i:s')
+					// 			.'</td>'
+					// 		.'</tr>';
 
-					echo '</tbody>'
-						.'</table>'
-						.'</div>';
+					// }
+
+					// echo '</tbody>'
+					// 	.'</table>'
+					// 	.'</div>';
+
+					list_sale($items_bought_query,"Items You Bought");
 				
 
 				}
 
-				echo 'Current Items you are selling '
-				.'<div class="table_div">'
-				.'<table class="table-striped table-bordered">'
-				.'<thead>'
-					.'<th>'
-						.'Title'
-					.'</th>'
-					.'<th>'
-						.'Description'
-					.'</th>'
-				.'</thead>'
-				.'<tbody>';
+				echo "<br>"
+					."<hr>"
+					."<br>";
 
-				while(($this_item = $sellings->fetch(PDO::FETCH_ASSOC)))
-				{
-					echo '<tr>' 
-							.'<td class="key_td">'
-								.'<a href="product.php?product_id='.$this_item["item_id"].'" >'
-									. $this_item["title"]
-								."</a>"
-							.'</td>'
-							.'<td>'
-								.'<a href="product.php?product_id='.$this_item["item_id"].'" >'
-									. $this_item["description"]
-								."</a>"
-							.'</td>'
-						.'</tr>';
+				list_items($sellings, "Current Items you are Selling");
+				// echo 'Current Items you are selling '
+				// .'<div class="table_div">'
+				// .'<table class="table-striped table-bordered">'
+				// .'<thead>'
+				// 	.'<th>'
+				// 		.'Title'
+				// 	.'</th>'
+				// 	.'<th>'
+				// 		.'Description'
+				// 	.'</th>'
+				// .'</thead>'
+				// .'<tbody>';
 
-				}
+				// while(($this_item = $sellings->fetch(PDO::FETCH_ASSOC)))
+				// {
+				// 	echo '<tr>' 
+				// 			.'<td class="key_td">'
+				// 				.'<a href="product.php?product_id='.$this_item["item_id"].'" >'
+				// 					. $this_item["title"]
+				// 				."</a>"
+				// 			.'</td>'
+				// 			.'<td>'
+				// 				.'<a href="product.php?product_id='.$this_item["item_id"].'" >'
+				// 					. $this_item["description"]
+				// 				."</a>"
+				// 			.'</td>'
+				// 		.'</tr>';
 
-			echo '</tbody>'
-				.'</table>'
-				.'</div>';
+				// }
 
+			// echo '</tbody>'
+			// 	.'</table>'
+			// 	.'</div>';
 
-			echo 'Items you sold '
-				.'<div class="table_div">'
-				.'<table class="table-striped table-bordered">'
-				.'<thead>'
-					.'<th>'
-						.'Title'
-					.'</th>'
-					.'<th>'
-						.'Sold for'
-					.'</th>'
-					.'<th>'
-						.'Quantity'
-					.'</th>'
-					.'<th>'
-						.'Date'
-					.'</th>'
-				.'</thead>'
-				.'<tbody>';
+				echo "<br>"
+					."<hr>"
+					."<br>";
 
-			while(($this_buy = $items_sold->fetch(PDO::FETCH_ASSOC)))
-			{
-				$sell_date = new DateTime($this_buy["sale_date"]);
-				echo '<tr>' 
-						.'<td class="key_td">'
-							. $this_buy["title"]
-						.'</td>'
-						.'<td>'
-							. $this_buy["buy_price"]
-						.'</td>'
-						.'<td>'
-							. $this_buy["quantity"]
-						.'</td>'
-						.'<td>'
-							. $sell_date->format('m/d/Y H:i:s')
-						.'</td>'
-					.'</tr>';
+				list_sale($items_sold,"Items You Sold");
 
-			}
-
-			echo '</tbody>'
-				.'</table>'
-				.'</div>';
-			?>				
+				echo "<br>"
+					."<hr>";
+			?>
 		</div>
 	</body>
 

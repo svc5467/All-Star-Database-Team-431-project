@@ -37,6 +37,7 @@
 	
 	<body>
 		<?php include "menu.php"; ?>
+		<?php include "assets/list_items.php" ?> 
 		
 		<!-- The "info" div is the meat of the body, it contains the general information of the page. -->
 		<div class="info">
@@ -48,19 +49,9 @@
 	
 			<ul class = "product_grid">
 				<?php
-					while($row = $itemRows->fetch(PDO::FETCH_ASSOC)) 
-					{
+					list_items($itemRows,"Cart Items")
 				?>
-					<a class = "item_link" href = "<?php echo $website_url; ?>/product.php?product_id=<?php echo $row['item_id'];?>">
-						<li>
-							Title: <?php echo $row['title'];?> <br>
-							Price: <?php echo $row['buy_it_now_price'];?> <br>
-							Description: <?php echo $row['description'];?> 
-						</li>
-					</a>
-				<?php
-					}
-				?>
+				
 			</ul>
 		<br>
 		<br>

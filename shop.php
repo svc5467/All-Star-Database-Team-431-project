@@ -1,7 +1,7 @@
 <?php
 	include "variables.php";
 	include "authenticate.php";
-	include "list_items.php";
+	include "assets/list_items.php";
 	$dbh =  new PDO("sqlite:".$database_url);
 
 	$itemRows;
