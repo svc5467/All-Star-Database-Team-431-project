@@ -1,7 +1,6 @@
 <?php
 	include "variables.php";
 	include "authenticate.php";
-	$dbh =  new PDO("sqlite:".$database_url);
 ?>
 
 <!DOCTYPE html>
@@ -18,28 +17,13 @@
 		<div class="info">
 			<!-- The "heading" div styles the heading of each section to stand out more and make it very readable.-->
 			<div class="heading">
-				<?php echo $this_user_seller["login_name"]."'s Shopping Cart" ?>
+				<?php echo $this_user_seller["login_name"].", Enter a Giftcard" ?>
 			</div>
-			<br>
 	
-			<ul class = "product_grid">
-				<?php
-					while($row = $itemRows->fetch(PDO::FETCH_ASSOC)) 
-					{
-				?>
-					<a class = "item_link" href = "<?php echo $website_url; ?>/product.php?product_id=<?php echo $row['item_id'];?>">
-						<li>
-							Title: <?php echo $row['title'];?> <br>
-							Price: <?php echo $row['buy_it_now_price'];?> <br>
-							Description: <?php echo $row['description'];?> 
-						</li>
-					</a>
-				<?php
-					}
-				?>
-			</ul>
-		<br>
-		<br>
+			<div class="form-group">
+				  <label for="gard_id">Gift Card:</label>
+				  <input type="text" class="form-control" id="gard_id">
+			</div>
 		</div>
 	</body>
 
